@@ -10,6 +10,6 @@
     echo $text->underline()."<br>";
     echo $text->capitalize()."<br>";
 
-    //echo $text->uglify()."<br>";
+    echo $text->uglify()."<br>";
 
 ?>

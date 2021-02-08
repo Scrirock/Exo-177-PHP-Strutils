@@ -12,7 +12,6 @@ class StrUtils{
         $this->setStr($str);
     }
 
-
     /**
      * Return the string
      * @return String
@@ -36,7 +35,7 @@ class StrUtils{
      * @return String
      */
     public function bold(): String{
-        return "<b>".$this->getStr()."</b>";
+        return "<span style='font-weight: bold;'>".$this->getStr()."</span>";
     }
 
     /**
@@ -44,7 +43,7 @@ class StrUtils{
      * @return String
      */
     public function italic(): String{
-        return "<em>".$this->getStr()."</em>";
+        return "<span style='font-style: italic;'>".$this->getStr()."</span>";
     }
 
     /**
@@ -52,7 +51,7 @@ class StrUtils{
      * @return String
      */
     public function underline(): String{
-        return "<u>".$this->getStr()."</u>";
+        return "<span style='text-decoration: underline;'>".$this->getStr()."</span>";
     }
 
     /**
@@ -68,7 +67,7 @@ class StrUtils{
      * @return String
      */
     public function uglify(): String{
-
+        return "<span style='text-decoration: underline; font-style: italic; font-weight: bold;'>".$this->getStr()."</span>";
     }
 
 }
