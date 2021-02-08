@@ -2,6 +2,7 @@
 
 class StrUtils{
     private String $str;
+    private Bool $flag;
 
     /**
      * StrUtils constructor.
@@ -10,6 +11,7 @@ class StrUtils{
     public function __construct(string $str)
     {
         $this->setStr($str);
+        $this->setFlag(true);
     }
 
     /**
@@ -31,11 +33,29 @@ class StrUtils{
     }
 
     /**
+     * @return bool
+     */
+    public function isFlag(): bool
+    {
+        return $this->flag;
+    }
+
+    /**
+     * @param bool $flag
+     */
+    public function setFlag(bool $flag): void
+    {
+        $this->flag = $flag;
+    }
+
+    /**
      * Return a bold text
      * @return String
      */
     public function bold(): String{
-        return "<span style='font-weight: bold;'>".$this->getStr()."</span>";
+        if ($this->isFlag()) $this->clearStr();
+        $this->setStr("<span style='font-weight: bold;'>".$this->getStr()."</span>");
+        return $this->getStr();
     }
 
     /**
@@ -43,7 +63,9 @@ class StrUtils{
      * @return String
      */
     public function italic(): String{
-        return "<span style='font-style: italic;'>".$this->getStr()."</span>";
+        if ($this->isFlag()) $this->clearStr();
+        $this->setStr("<span style='font-style: italic;'>".$this->getStr()."</span>");
+        return $this->getStr();
     }
 
     /**
@@ -51,7 +73,9 @@ class StrUtils{
      * @return String
      */
     public function underline(): String{
-        return "<span style='text-decoration: underline;'>".$this->getStr()."</span>";
+        if ($this->isFlag()) $this->clearStr();
+        $this->setStr("<span style='text-decoration: underline;'>".$this->getStr()."</span>");
+        return $this->getStr();
     }
 
     /**
@@ -59,7 +83,9 @@ class StrUtils{
      * @return String
      */
     public function capitalize(): String{
-        return "<span style='text-transform: capitalize;'>".$this->getStr()."</span>";
+        if ($this->isFlag()) $this->clearStr();
+        $this->setStr("<span style='text-transform: capitalize;'>".$this->getStr()."</span>");
+        return $this->getStr();
     }
 
     /**
@@ -67,7 +93,20 @@ class StrUtils{
      * @return String
      */
     public function uglify(): String{
-        return "<span style='text-decoration: underline; font-style: italic; font-weight: bold;'>".$this->getStr()."</span>";
+        $this->setFlag(false);
+        $this->bold();
+        $this->italic();
+        $this->underline();
+        $this->capitalize();
+
+        $this->setFlag(true);
+        return $this->getStr();
     }
 
+    /**
+     * Clear all tag html
+     */
+    private function clearStr(): void{
+        $this->setStr(strip_tags($this->getStr()));
+    }
 }

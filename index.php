@@ -8,8 +8,13 @@
     echo $text->bold()."<br>";
     echo $text->italic()."<br>";
     echo $text->underline()."<br>";
-    echo $text->capitalize()."<br>";
+    echo $text->capitalize()."<br><br>";
 
-    echo $text->uglify()."<br>";
+    echo $text->uglify()."<br><br>";
+
+    echo $text->bold()."<br>";
+    echo $text->italic()."<br>";
+    echo $text->underline()."<br>";
+    echo $text->capitalize()."<br><br>";
 
 ?>
